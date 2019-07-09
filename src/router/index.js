@@ -33,38 +33,60 @@ import Layout from '@/layout'
 * 所有角色都可以访问
 */
 export const constantRoutes = [
-  {
-    path: '/',
-    component: Layout,
-    redirect: '/dashboard',
-    children: [{
-      path: 'dashboard',
-      name: 'Dashboard',
-      component: () => import('@/views/dashboard/index'),
-      meta: { title: '工作仪表盘', icon: 'dashboard' }
-    }]
+	{
+		path: '/',
+		component: Layout,
+		redirect: '/dashboard',
+		children: [{
+			path: 'dashboard',
+			name: 'Dashboard',
+			component: () => import('@/views/dashboard/index'),
+			meta: { title: '工作仪表盘', icon: 'dashboard' }
+		}]
 	},
-	
+
+	{
+		path: '/chart',
+		component: Layout,
+		redirect: '/chart/bar',
+		name: 'Chart',
+		meta: { title: '图形', icon: 'area-chart' },
+		children: [
+			{
+				path: 'bar',
+				name: 'Bar',
+				component: () => import('@/views/dashboard'),
+				meta: { title: '柱图', icon: 'bar-chart' }
+			},
+			{
+				path: 'line',
+				name: 'Line',
+				component: () => import('@/views/dashboard'),
+				meta: { title: '线图', icon: 'line-chart' }
+			}
+		]
+	},
+
 	// 404页面必须放在最后!!!
-  {
-    path: '*',
-    redirect: '/dashboard',// TODO -> /404
-    hidden: true
-  }
+	{
+		path: '*',
+		redirect: '/dashboard',// TODO -> /404
+		hidden: true
+	}
 
 ]
 
 
 const createRouter = () => new Router({
-  scrollBehavior: () => ({ y: 0 }),
-  routes: constantRoutes
+	scrollBehavior: () => ({ y: 0 }),
+	routes: constantRoutes
 })
 
 const router = createRouter()
 
 export function resetRouter() {
-  const newRouter = createRouter()
-  router.matcher = newRouter.matcher // 重置路由
+	const newRouter = createRouter()
+	router.matcher = newRouter.matcher // 重置路由
 }
 
 export default router

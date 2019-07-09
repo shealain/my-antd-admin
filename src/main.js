@@ -6,6 +6,8 @@ import 'normalize.css/normalize.css'
 import Antd from 'ant-design-vue'
 import 'ant-design-vue/dist/antd.css'
 
+import '@/styles/index.scss'
+
 import router from './router'
 
 Vue.use(Antd)
