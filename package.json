@@ -1,0 +1,20 @@
+{
+  "name": "my-antd-admin",
+  "version": "1.0.0",
+  "description": "我的管理桌面",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shealain/my-antd-admin.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shealain/my-antd-admin/issues"
+  },
+  "homepage": "https://github.com/shealain/my-antd-admin#readme"
+}
