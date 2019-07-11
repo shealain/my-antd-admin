@@ -8,6 +8,8 @@
       width="256px"
       v-model="isCollapse"
     >
+      <logo v-if="showLogo" :theme="theme" :collapse="isCollapse" />
+
       <my-menu :theme="theme" :mode="mode" :collapsed="isCollapse" :menuData="routes" />
     </a-layout-sider>
   </div>
@@ -15,6 +17,7 @@
 
 <script>
 import MyMenu from "./menu";
+import Logo from "./Logo";
 
 export default {
   name: "Sidebar",
@@ -26,7 +29,8 @@ export default {
     }
   },
   components: {
-    MyMenu
+    MyMenu,
+    Logo
   },
   data() {
     return {};
@@ -43,6 +47,9 @@ export default {
     },
     isCollapse() {
       return false;
+    },
+    showLogo() {
+      return true;
     }
   }
 };

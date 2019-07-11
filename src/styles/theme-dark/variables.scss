@@ -1,8 +1,14 @@
 // sidebar
 $darkSideBarBg: #001529;
 
+$darkSideBarTitle: #fff;
+
+$darkSidebarLogoContainer: #002140;
+
 // :export指令 是 webpack 的功能
 // 地址: https://www.bluematador.com/blog/how-to-share-variables-between-js-and-sass
 :export {
   darkSideBarBg: $darkSideBarBg;
+  darkSideBarTitle: $darkSideBarTitle;
+  darkSidebarLogoContainer: $darkSidebarLogoContainer;
 }
