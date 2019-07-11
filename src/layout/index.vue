@@ -4,13 +4,15 @@
     <div class="main-container">
       <navbar />
       <app-main />
-      <right-panel></right-panel>
+      <right-panel>
+        <settings />
+      </right-panel>
     </div>
   </div>
 </template>
 
 <script>
-import { Sidebar, Navbar, AppMain, RightPanel } from "./components";
+import { Sidebar, Navbar, AppMain, RightPanel, Settings } from "./components";
 
 export default {
   name: "Layout",
@@ -18,7 +20,8 @@ export default {
     Sidebar,
     Navbar,
     AppMain,
-    RightPanel
+    RightPanel,
+    Settings
   },
   computed: {
 
