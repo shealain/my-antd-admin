@@ -3,21 +3,24 @@
     <sidebar class="sidebar-container" />
     <div class="main-container">
       <navbar />
-      <router-view />
+      <app-main />
     </div>
   </div>
 </template>
 
 <script>
-import { Sidebar, Navbar } from "./components";
+import { Sidebar, Navbar, AppMain } from "./components";
 
 export default {
   name: "Layout",
   components: {
     Sidebar,
-    Navbar
+    Navbar,
+    AppMain
   },
-  computed: {},
+  computed: {
+    
+  },
   methods: {}
 };
 </script>
