@@ -4,22 +4,24 @@
     <div class="main-container">
       <navbar />
       <app-main />
+      <right-panel></right-panel>
     </div>
   </div>
 </template>
 
 <script>
-import { Sidebar, Navbar, AppMain } from "./components";
+import { Sidebar, Navbar, AppMain, RightPanel } from "./components";
 
 export default {
   name: "Layout",
   components: {
     Sidebar,
     Navbar,
-    AppMain
+    AppMain,
+    RightPanel
   },
   computed: {
-    
+
   },
   methods: {}
 };
