@@ -3,6 +3,7 @@
     <sidebar class="sidebar-container" />
     <div class="main-container">
       <navbar />
+      <tags-view />
       <app-main />
       <right-panel>
         <settings />
@@ -12,7 +13,14 @@
 </template>
 
 <script>
-import { Sidebar, Navbar, AppMain, RightPanel, Settings } from "./components";
+import { 
+  Sidebar, 
+  Navbar, 
+  AppMain, 
+  RightPanel, 
+  Settings, 
+  TagsView 
+} from "./components";
 
 export default {
   name: "Layout",
@@ -21,7 +29,8 @@ export default {
     Navbar,
     AppMain,
     RightPanel,
-    Settings
+    Settings,
+    TagsView
   },
   computed: {
 
