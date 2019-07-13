@@ -1,11 +1,12 @@
 import Cookies from 'js-cookie'
 import defaultSettings from '@/settings'
 
-const { theme, tagsView } = defaultSettings
+const { theme, tagsView, fixedHeader } = defaultSettings
 
 const state = {
 	theme: Cookies.get('theme') ? Cookies.get('theme') : theme,
-	tagsView
+	tagsView,
+	fixedHeader
 }
 
 const mutations = {

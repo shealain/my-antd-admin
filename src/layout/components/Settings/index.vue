@@ -64,10 +64,13 @@ export default {
     },
     fixedHeader: {
       get() {
-        return false;
+        return this.$store.state.settings.fixedHeader;
       },
       set(val) {
-
+        this.$store.dispatch("settings/changeSetting", {
+          key: "fixedHeader",
+          value: val
+        });
       }
     },
     sidebarLogo: {

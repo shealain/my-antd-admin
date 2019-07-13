@@ -82,4 +82,34 @@
 		}
 	}
 
+	.fixed-header {
+		position: fixed;
+		top: 0;
+		right: 0;
+		z-index: 9;
+		width: calc(100% - #{$sideBarWidth});
+		transition: width 0.28s;
+	}
+
+	.hideSidebar .fixed-header {
+		width: calc(100% - 80px);
+	}
+
+	.mobile .fixed-header {
+		width: 100%;
+	}
+
+	.app-main {
+		position: relative;
+		width: 100%;
+		min-height: calc(100vh - 50px);
+		overflow: hidden;
+	}
+	.app-main.fixed {
+		padding-top: 50px;
+	}
+	.app-main.fixed.need-tags-view {
+		padding-top: 84px;
+	}
+
 }

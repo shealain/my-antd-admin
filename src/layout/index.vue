@@ -3,9 +3,11 @@
     <div v-if="device==='mobile' && sidebar.opened" class="drawer-bg" @click="handleClickOutside"></div>
     <sidebar class="sidebar-container" />
     <div class="main-container">
-      <navbar />
-      <tags-view v-if="needTagsView" />
-      <app-main />
+      <div :class="{'fixed-header':fixedHeader}">
+        <navbar />
+        <tags-view v-if="needTagsView" />
+      </div>
+      <app-main :class="{'fixed':fixedHeader,'need-tags-view':needTagsView}" />
       <right-panel>
         <settings />
       </right-panel>
@@ -42,6 +44,9 @@ export default {
     ...mapGetters(["sidebar", "device"]),
     needTagsView() {
       return this.$store.state.settings.tagsView;
+    },
+    fixedHeader() {
+      return this.$store.state.settings.fixedHeader;
     },
     classObj() {
       return {

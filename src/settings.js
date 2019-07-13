@@ -11,5 +11,11 @@ export default {
 	 * @type {boolean} true | false
 	 * @description 是否需要tagsView
 	 */
-	tagsView: true
+	tagsView: true,
+
+	/**
+	 * @type {boolean} true | false
+	 * @description 是否固定头部
+	 */
+	fixedHeader: false
 }
