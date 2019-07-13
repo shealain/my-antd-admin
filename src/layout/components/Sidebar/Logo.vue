@@ -29,7 +29,7 @@ export default {
   data() {
     return {
       title: "My Admin",
-      logo: "/favicon.ico"
+      logo: "/my-antd-admin/favicon.ico"
     };
   }
 };

@@ -11,13 +11,13 @@ const users = {
 	'admin-token': {
 		roles: ['admin'],
 		introduction: 'I am a super administrator',
-		avatar: '/favicon.ico',
+		avatar: '/my-antd-admin/favicon.ico',
 		name: 'Super Admin'
 	},
 	'editor-token': {
 		roles: ['editor'],
 		introduction: 'I am an editor',
-		avatar: '/favicon.ico',
+		avatar: '/my-antd-admin/favicon.ico',
 		name: 'Normal Editor'
 	}
 }
@@ -47,7 +47,7 @@ export default [
 
 	// 获取用户信息
 	{
-		url: '/user/info\.*',
+		url: '/user/info\\.*',
 		type: 'get',
 		response: req => {
 			const { token } = req.query
