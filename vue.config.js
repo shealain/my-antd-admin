@@ -21,7 +21,7 @@ module.exports = {
    * 在大多数情况下，请使用 '/' !!!
    * 详情: https://cli.vuejs.org/config/#publicpath
    */
-	publicPath: '/',
+	publicPath: '/my-antd-admin',
 	outputDir: 'dist',
 	assetsDir: 'static',
 	lintOnSave: process.env.NODE_ENV === 'development',
