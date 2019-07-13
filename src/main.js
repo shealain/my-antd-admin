@@ -11,6 +11,8 @@ import '@/styles/index.scss'
 import router from './router'
 import store from './store'
 
+import '@/permission'
+
 
 Vue.use(Antd)
 

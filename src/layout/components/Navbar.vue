@@ -51,6 +51,8 @@ export default {
     },
     async logout() {
       console.log("登出:", this.$route.fullPath);
+      await this.$store.dispatch("user/logout");
+      this.$router.push(`/login?redirect=${this.$route.fullPath}`);
     }
   }
 };

@@ -75,6 +75,15 @@ export default {
       error: ""
     };
   },
+  watch: {
+    $route: {
+      handler: function(route) {
+        // console.log(route)
+        this.redirect = route.query && route.query.redirect;
+      },
+      immediate: true
+    }
+  },
   methods: {
     showPwd() {
       if (this.passwordType === "password") {
@@ -90,7 +99,19 @@ export default {
       e.preventDefault();
 
       this.form.validateFields((err, values) => {
-        console.log("login!");
+        if (!err) {
+          this.loading = true;
+          this.$store.dispatch("user/login", values).then(() => {
+            this.$router.push({
+              path: this.redirect || "/"
+            });
+            this.loading = false;
+          });
+        } else {
+          this.error = "error submit!!";
+          window.console.log("error submit!!");
+          return false;
+        }
       });
     }
   }
