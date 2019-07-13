@@ -165,7 +165,14 @@ export default {
         });
       });
     },
-    closeOthersTags() {},
+    closeOthersTags() {
+      this.$router.push(this.selectedTag);
+      this.$store
+        .dispatch("tagsView/delOthersViews", this.selectedTag)
+        .then(() => {
+          // TODO
+        });
+    },
     closeAllTags(view) {}
   }
 };

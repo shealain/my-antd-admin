@@ -43,8 +43,23 @@ const mutations = {
 				break
 			}
 		}
+	},
+
+	DEL_OTHERS_VISITED_VIEWS: (state, view) => {
+		state.visitedViews = state.visitedViews.filter(v => {
+			return v.meta.affix || v.path === view.path
+		})
+	},
+	DEL_OTHERS_CACHED_VIEWS: (state, view) => {
+		for (const n of state.cachedViews) {
+			if (n === view.name) {
+				const index = state.cachedViews.indexOf(n)
+				state.cachedViews = state.cachedViews.slice(index, index + 1)
+				break
+			}
+		}
 	}
-	
+
 }
 
 const actions = {
@@ -80,7 +95,31 @@ const actions = {
 			commit('DEL_CACHED_VIEW', view)
 			resolve([...state.cachedViews])
 		})
+	},
+
+	delOthersViews({ dispatch, state }, view) {
+		return new Promise(resolve => {
+			dispatch('delOthersVisitedViews', view)
+			dispatch('delOthersCachedViews', view)
+			resolve({
+				visitedViews: [...state.visitedViews],
+				cachedViews: [...state.cachedViews]
+			})
+		})
+	},
+	delOthersVisitedViews({ commit, state }, view) {
+		return new Promise(resolve => {
+			commit('DEL_OTHERS_VISITED_VIEWS', view)
+			resolve([...state.visitedViews])
+		})
+	},
+	delOthersCachedViews({ commit, state }, view) {
+		return new Promise(resolve => {
+			commit('DEL_OTHERS_CACHED_VIEWS', view)
+			resolve([...state.cachedViews])
+		})
 	}
+
 }
 
 export default {
