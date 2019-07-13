@@ -38,15 +38,16 @@ export default {
     return {};
   },
   computed: {
-    ...mapGetters(["permission_routes"]),
+    ...mapGetters(["permission_routes", "sidebar"]),
     theme() {
       return "light";
     },
     mode() {
-      return true ? "inline" : "vertical";
+      return this.sidebar.opened ? "inline" : "vertical";
     },
     isCollapse() {
-      return false;
+      // console.log('isCollapse', this.sidebar.opened)
+      return !this.sidebar.opened;
     },
     showLogo() {
       return true;

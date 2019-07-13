@@ -1,5 +1,5 @@
 <template>
-  <div class="app-wrapper">
+  <div :class="classObj" class="app-wrapper">
     <sidebar class="sidebar-container" />
     <div class="main-container">
       <navbar />
@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 import {
   Sidebar,
   Navbar,
@@ -32,7 +34,16 @@ export default {
     Settings,
     TagsView
   },
-  computed: {},
+  computed: {
+    ...mapGetters(["sidebar"]),
+    classObj() {
+      return {
+        hideSidebar: !this.sidebar.opened,
+        openSidebar: this.sidebar.opened,
+        withoutAnimation: this.sidebar.withoutAnimation
+      };
+    }
+  },
   methods: {}
 };
 </script>

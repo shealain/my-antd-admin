@@ -1,11 +1,42 @@
 #app {
 	height: 100%;
 
+	.sidebar-container {
+		position: fixed;
+		left: 0;
+		top: 0;
+		bottom: 0;
+		z-index: 1001;
+		height: 100%;
+
+		font-size: 0px;
+	}
+
 	.main-container {
 		position: relative;
 		margin-left: $sideBarWidth;
 		min-height: 100%;
 		transition: margin-left .28s;
+	}
+
+
+	.hideSidebar {
+		.sidebar-container {
+			width: 80px !important;
+		}
+
+		.main-container {
+			margin-left: 80px;
+		}
+	}
+
+	// closeSideBar 不需要开启过度
+	.withoutAnimation {
+
+		.main-container,
+		.sidebar-container {
+			transition: none;
+		}
 	}
 
 }

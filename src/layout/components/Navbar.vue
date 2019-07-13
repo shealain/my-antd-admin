@@ -1,6 +1,6 @@
 <template>
   <div class="navbar">
-    <hamburger :is-active="true" class="hamburger-container" @toggleClick="toggleSideBar" />
+    <hamburger :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
 
     <breadcrumb class="breadcrumb-container" />
 
@@ -31,6 +31,7 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
 import Hamburger from "@/components/Hamburger";
 import Breadcrumb from "@/components/Breadcrumb";
 
@@ -41,14 +42,10 @@ export default {
     Breadcrumb
   },
   computed: {
-    avatar() {
-      return "/favicon.ico";
-    }
+    ...mapGetters(["sidebar", "avatar"])
   },
   methods: {
-    toggleSideBar() {
-      console.log("toggleSideBar");
-    },
+    ...mapActions("app", ["toggleSideBar"]),
     async logout() {
       console.log("登出:", this.$route.fullPath);
       await this.$store.dispatch("user/logout");
