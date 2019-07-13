@@ -11,6 +11,8 @@
     <div class="right-menu">
       <template v-if="device !== 'mobile'">
         <search id="header-search" class="right-menu-item" />
+
+        <error-log class="errLog-container right-menu-item hover-effect" />
       </template>
       <div class="avatar-container">
         <a-dropdown :trigger="['click']">
@@ -42,13 +44,15 @@ import { mapGetters, mapActions } from "vuex";
 import Hamburger from "@/components/Hamburger";
 import Breadcrumb from "@/components/Breadcrumb";
 import Search from "@/components/HeaderSearch";
+import ErrorLog from "@/components/ErrorLog";
 
 export default {
   name: "Navbar",
   components: {
     Hamburger,
     Breadcrumb,
-    Search
+    Search,
+    ErrorLog
   },
   computed: {
     ...mapGetters(["sidebar", "avatar", "device"])

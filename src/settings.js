@@ -29,5 +29,13 @@ export default {
 	 * @type {boolean} true | false
 	 * @description 是否显示右侧面板的设置
 	 */
-	showSettings: true
+	showSettings: true,
+
+	/**
+	 * @type {string | array} 'production' | ['production', 'development']
+	 * @description 需要显示错误日志组件。
+	 * 默认值仅用于生产环境
+	 * 如果你想在dev中使用它，你可以传递 ['production', 'development']
+	 */
+	errorLog: ['production', 'development']
 }

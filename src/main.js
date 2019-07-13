@@ -12,7 +12,7 @@ import router from './router'
 import store from './store'
 
 import '@/permission'
-
+import '@/utils/error-log'
 
 Vue.use(Antd)
 
