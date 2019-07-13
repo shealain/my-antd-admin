@@ -155,7 +155,16 @@ export default {
           }
         });
     },
-    refreshSelectedTag(view) {},
+    refreshSelectedTag(view) {
+      this.$store.dispatch("tagsView/delCachedView", view).then(() => {
+        const { fullPath } = view;
+        this.$nextTick(() => {
+          this.$router.replace({
+            path: "/redirect" + fullPath
+          });
+        });
+      });
+    },
     closeOthersTags() {},
     closeAllTags(view) {}
   }
