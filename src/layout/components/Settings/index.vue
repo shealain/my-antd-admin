@@ -75,10 +75,13 @@ export default {
     },
     sidebarLogo: {
       get() {
-        return true;
+        return this.$store.state.settings.sidebarLogo;
       },
       set(val) {
-        
+        this.$store.dispatch("settings/changeSetting", {
+          key: "sidebarLogo",
+          value: val
+        });
       }
     }
   },

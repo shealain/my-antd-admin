@@ -17,5 +17,11 @@ export default {
 	 * @type {boolean} true | false
 	 * @description 是否固定头部
 	 */
-	fixedHeader: false
+	fixedHeader: false,
+
+	/**
+	 * @type {boolean} true | false
+	 * @description 是否在左侧菜单中展示logo
+	 */
+	sidebarLogo: true
 }

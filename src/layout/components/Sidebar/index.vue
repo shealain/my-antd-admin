@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :class="{'has-logo':showLogo}">
     <a-layout-sider
       :class="[theme, 'sider', 'shadow']"
       :collapsible="collapsible"
@@ -47,7 +47,7 @@ export default {
       return !this.sidebar.opened;
     },
     showLogo() {
-      return true;
+      return this.$store.state.settings.sidebarLogo;
     }
   }
 };
