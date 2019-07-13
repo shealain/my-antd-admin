@@ -1,10 +1,17 @@
 <template>
   <div class="navbar">
-    <hamburger :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
+    <hamburger
+      :is-active="sidebar.opened"
+      class="hamburger-container"
+      @toggleClick="toggleSideBar"
+    />
 
     <breadcrumb class="breadcrumb-container" />
 
     <div class="right-menu">
+      <template v-if="device !== 'mobile'">
+        <search id="header-search" class="right-menu-item" />
+      </template>
       <div class="avatar-container">
         <a-dropdown :trigger="['click']">
           <a class="avatar-wrapper ant-dropdown-link" href="#">
@@ -34,15 +41,17 @@
 import { mapGetters, mapActions } from "vuex";
 import Hamburger from "@/components/Hamburger";
 import Breadcrumb from "@/components/Breadcrumb";
+import Search from "@/components/HeaderSearch";
 
 export default {
   name: "Navbar",
   components: {
     Hamburger,
-    Breadcrumb
+    Breadcrumb,
+    Search
   },
   computed: {
-    ...mapGetters(["sidebar", "avatar"])
+    ...mapGetters(["sidebar", "avatar", "device"])
   },
   methods: {
     ...mapActions("app", ["toggleSideBar"]),
