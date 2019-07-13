@@ -49,26 +49,33 @@ export const constantRoutes = [
 			component: () => import('@/views/dashboard/index'),
 			meta: { title: '工作仪表盘', icon: 'dashboard', affix: true }
 		}]
-	},
+	}
 
+]
+
+/**
+ * asyncRoutes
+ * 需要根据用户角色动态加载的路由
+ */
+export const asyncRoutes = [
 	{
 		path: '/chart',
 		component: Layout,
 		redirect: '/chart/bar',
 		name: 'Chart',
-		meta: { title: '图形', icon: 'area-chart' },
+		meta: { title: '图形', icon: 'area-chart', roles: ['admin', 'editor'] },// 你可以在根导航中设置角色
 		children: [
 			{
 				path: 'bar',
 				name: 'Bar',
-				component: () => import('@/views/dashboard'),
-				meta: { title: '柱图', icon: 'bar-chart' }
+				component: () => import('@/views/dashboard/index'),
+				meta: { title: '柱图', icon: 'bar-chart', roles: ['admin'] }// 或者你只能在子导航中设置角色
 			},
 			{
 				path: 'line',
 				name: 'Line',
-				component: () => import('@/views/dashboard'),
-				meta: { title: '线图', icon: 'line-chart' }
+				component: () => import('@/views/dashboard/index'),
+				meta: { title: '线图', icon: 'line-chart' }// 如果不设置角色，则表示：此页面不需要权限
 			}
 		]
 	},
@@ -79,8 +86,8 @@ export const constantRoutes = [
 		redirect: '/dashboard',// TODO -> /404
 		hidden: true
 	}
-
 ]
+
 
 
 const createRouter = () => new Router({

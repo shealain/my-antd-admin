@@ -13,13 +13,13 @@
 </template>
 
 <script>
-import { 
-  Sidebar, 
-  Navbar, 
-  AppMain, 
-  RightPanel, 
-  Settings, 
-  TagsView 
+import {
+  Sidebar,
+  Navbar,
+  AppMain,
+  RightPanel,
+  Settings,
+  TagsView
 } from "./components";
 
 export default {
@@ -32,9 +32,7 @@ export default {
     Settings,
     TagsView
   },
-  computed: {
-
-  },
+  computed: {},
   methods: {}
 };
 </script>

@@ -10,12 +10,14 @@
     >
       <logo v-if="showLogo" :theme="theme" :collapse="isCollapse" />
 
-      <my-menu :theme="theme" :mode="mode" :collapsed="isCollapse" :menuData="routes" />
+      <my-menu :theme="theme" :mode="mode" :collapsed="isCollapse" :menuData="permission_routes" />
     </a-layout-sider>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 import MyMenu from "./menu";
 import Logo from "./Logo";
 
@@ -36,9 +38,7 @@ export default {
     return {};
   },
   computed: {
-    routes() {
-      return this.$router.options.routes;
-    },
+    ...mapGetters(["permission_routes"]),
     theme() {
       return "light";
     },
