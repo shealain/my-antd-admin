@@ -43,10 +43,12 @@ export default {
   computed: {
     checked: {
       get() {
-        return false;
+        const theme = this.$store.state.settings.theme;
+        return theme === "dark";
       },
       set(val) {
         const theme = val ? "dark" : "light";
+        this.$store.dispatch("settings/toggleTheme", theme);
       }
     },
     tagsView: {

@@ -38,10 +38,7 @@ export default {
     return {};
   },
   computed: {
-    ...mapGetters(["permission_routes", "sidebar"]),
-    theme() {
-      return "light";
-    },
+    ...mapGetters(["permission_routes", "sidebar", "theme"]),
     mode() {
       return this.sidebar.opened ? "inline" : "vertical";
     },
