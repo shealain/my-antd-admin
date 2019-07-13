@@ -110,15 +110,54 @@ export default {
       }
       return false;
     },
-    closeSelectedTag(view) {},
-    refreshSelectedTag(view) {},
-    closeOthersTags() {},
-    closeAllTags(view) {},
-    toLastView(visitedViews, view) {},
-    openMenu(tag, ev) {},
+    openMenu(tag, ev) {
+      const menuMinWidth = 105;
+      const offsetLeft = this.$el.getBoundingClientRect().left; // 容器的marginLeft
+      const offsetWidth = this.$el.offsetWidth; // 容器的width
+      const maxLeft = offsetWidth - menuMinWidth; // 最大的左边位置
+      const left = ev.clientX - offsetLeft + 15; // 15: marginRight
+
+      if (left > maxLeft) {
+        this.left = maxLeft;
+      } else {
+        this.left = left;
+      }
+
+      this.top = ev.clientY;
+      this.visible = true;
+      this.selectedTag = tag;
+    },
     closeMenu() {
       this.visible = false;
-    }
+    },
+    toLastView(visitedViews, view) {
+      const lastestView = visitedViews.slice(-1)[0];
+
+      if (lastestView) {
+        this.$router.push(lastestView);
+      } else {
+        // 现在默认是如果没有tags-view则重定向到主页
+        // 你可以根据自己的需要进行调整
+        if (view.name === "Dashboard") {
+          // 重新加载主页
+          this.$router.replace({ path: "/redirect" + view.fullPath });
+        } else {
+          this.$router.push("/");
+        }
+      }
+    },
+    closeSelectedTag(view) {
+      this.$store
+        .dispatch("tagsView/delView", view)
+        .then(({ visitedViews }) => {
+          if (this.isActive(view)) {
+            this.toLastView(visitedViews, view);
+          }
+        });
+    },
+    refreshSelectedTag(view) {},
+    closeOthersTags() {},
+    closeAllTags(view) {}
   }
 };
 </script>
