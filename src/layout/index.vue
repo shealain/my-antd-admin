@@ -1,5 +1,6 @@
 <template>
   <div :class="classObj" class="app-wrapper">
+    <div v-if="device==='mobile' && sidebar.opened" class="drawer-bg" @click="handleClickOutside"></div>
     <sidebar class="sidebar-container" />
     <div class="main-container">
       <navbar />
@@ -24,6 +25,8 @@ import {
   TagsView
 } from "./components";
 
+import ResizeMixin from "./mixin/ResizeHandler";
+
 export default {
   name: "Layout",
   components: {
@@ -34,17 +37,23 @@ export default {
     Settings,
     TagsView
   },
+  mixins: [ResizeMixin],
   computed: {
-    ...mapGetters(["sidebar"]),
+    ...mapGetters(["sidebar", "device"]),
     classObj() {
       return {
         hideSidebar: !this.sidebar.opened,
         openSidebar: this.sidebar.opened,
-        withoutAnimation: this.sidebar.withoutAnimation
+        withoutAnimation: this.sidebar.withoutAnimation,
+        mobile: this.device === "mobile"
       };
     }
   },
-  methods: {}
+  methods: {
+    handleClickOutside() {
+      this.$store.dispatch("app/closeSideBar", { withoutAnimation: false });
+    }
+  }
 };
 </script>
 

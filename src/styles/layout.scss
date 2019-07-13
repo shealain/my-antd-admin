@@ -1,6 +1,19 @@
 #app {
 	height: 100%;
 
+	.app-wrapper {
+		@include clearfix;
+		position: relative;
+		height: 100%;
+		width: 100%;
+
+		// mobile模式下，打开侧边栏，整个app-wrapper禁止滚动
+		&.mobile.openSidebar {
+			position: fixed;
+			top: 0;
+		}
+	}
+
 	.sidebar-container {
 		position: fixed;
 		left: 0;
@@ -28,6 +41,36 @@
 		.main-container {
 			margin-left: 80px;
 		}
+	}
+
+	// mobile responsive
+	.mobile {
+		.main-container {
+			margin-left: 0px;
+		}
+
+		.sidebar-container {
+			transition: transform .28s;
+			width: $sideBarWidth !important;
+		}
+
+		&.hideSidebar {
+			.sidebar-container {
+				pointer-events: none;
+				transition-duration: 0.3s;
+				transform: translate3d(-$sideBarWidth, 0, 0);
+			}
+		}
+	}
+
+	.drawer-bg {
+		background: #000;
+		opacity: 0.3;
+		width: 100%;
+		top: 0;
+		height: 100%;
+		position: absolute;
+		z-index: 999;
 	}
 
 	// closeSideBar 不需要开启过度
