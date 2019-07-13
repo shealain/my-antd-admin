@@ -13,7 +13,10 @@
         <search id="header-search" class="right-menu-item" />
 
         <error-log class="errLog-container right-menu-item hover-effect" />
+
+        <screenfull id="screenfull" class="right-menu-item hover-effect" />
       </template>
+
       <div class="avatar-container">
         <a-dropdown :trigger="['click']">
           <a class="avatar-wrapper ant-dropdown-link" href="#">
@@ -45,6 +48,7 @@ import Hamburger from "@/components/Hamburger";
 import Breadcrumb from "@/components/Breadcrumb";
 import Search from "@/components/HeaderSearch";
 import ErrorLog from "@/components/ErrorLog";
+import Screenfull from "@/components/Screenfull";
 
 export default {
   name: "Navbar",
@@ -52,7 +56,8 @@ export default {
     Hamburger,
     Breadcrumb,
     Search,
-    ErrorLog
+    ErrorLog,
+    Screenfull
   },
   computed: {
     ...mapGetters(["sidebar", "avatar", "device"])
