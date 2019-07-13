@@ -4,7 +4,7 @@
     <sidebar class="sidebar-container" />
     <div class="main-container">
       <navbar />
-      <tags-view />
+      <tags-view v-if="needTagsView" />
       <app-main />
       <right-panel>
         <settings />
@@ -40,6 +40,9 @@ export default {
   mixins: [ResizeMixin],
   computed: {
     ...mapGetters(["sidebar", "device"]),
+    needTagsView() {
+      return this.$store.state.settings.tagsView;
+    },
     classObj() {
       return {
         hideSidebar: !this.sidebar.opened,

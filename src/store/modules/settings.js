@@ -1,13 +1,19 @@
 import Cookies from 'js-cookie'
 import defaultSettings from '@/settings'
 
-const { theme } = defaultSettings
+const { theme, tagsView } = defaultSettings
 
 const state = {
-	theme: Cookies.get('theme') ? Cookies.get('theme') : theme
+	theme: Cookies.get('theme') ? Cookies.get('theme') : theme,
+	tagsView
 }
 
 const mutations = {
+	CHANGE_SETTING: (state, { key, value }) => {
+		if (state.hasOwnProperty(key)) {
+			state[key] = value
+		}
+	},
 	TOGGLE_THEME: (state, theme) => {
 		state.theme = theme
 		Cookies.set('theme', theme)
@@ -15,6 +21,9 @@ const mutations = {
 }
 
 const actions = {
+	changeSetting({ commit }, data) {
+		commit('CHANGE_SETTING', data)
+	},
 	toggleTheme({ commit }, theme) {
 		commit('TOGGLE_THEME', theme)
 	}

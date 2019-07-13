@@ -53,10 +53,13 @@ export default {
     },
     tagsView: {
       get() {
-        return false;
+        return this.$store.state.settings.tagsView;
       },
       set(val) {
-
+        this.$store.dispatch("settings/changeSetting", {
+          key: "tagsView",
+          value: val
+        });
       }
     },
     fixedHeader: {
