@@ -23,5 +23,11 @@ export default {
 	 * @type {boolean} true | false
 	 * @description 是否在左侧菜单中展示logo
 	 */
-	sidebarLogo: true
+	sidebarLogo: true,
+
+	/**
+	 * @type {boolean} true | false
+	 * @description 是否显示右侧面板的设置
+	 */
+	showSettings: true
 }

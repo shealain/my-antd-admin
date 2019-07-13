@@ -8,7 +8,7 @@
         <tags-view v-if="needTagsView" />
       </div>
       <app-main :class="{'fixed':fixedHeader,'need-tags-view':needTagsView}" />
-      <right-panel>
+      <right-panel v-if="showSettings">
         <settings />
       </right-panel>
     </div>
@@ -47,6 +47,9 @@ export default {
     },
     fixedHeader() {
       return this.$store.state.settings.fixedHeader;
+    },
+    showSettings() {
+      return this.$store.state.settings.showSettings;
     },
     classObj() {
       return {
