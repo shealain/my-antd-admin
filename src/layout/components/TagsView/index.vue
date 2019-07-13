@@ -45,15 +45,10 @@ export default {
   },
   computed: {
     visitedViews() {
-      return [{
-        path: '/dashboard',
-        name: 'Dashboard',
-        title: '工作仪表盘',
-        meta: { title: '工作仪表盘', icon: 'dashboard', affix: true }
-      }];
+      return this.$store.state.tagsView.visitedViews;
     },
     routes() {
-      return this.$router.options.routes;
+      return this.$store.state.permission.routes;
     }
   },
   watch: {
@@ -100,9 +95,20 @@ export default {
     initTags() {
       // 默认显示的tag，如：'Dashboard'，即：meta.affix = true
       const affixTags = (this.affixTags = this.filterAffixTags(this.routes));
+      for (const tag of affixTags) {
+        // 必须有名称
+        if (tag.name) {
+          this.$store.dispatch("tagsView/addVisitedView", tag);
+        }
+      }
     },
     addTags() {
-      
+      // 当前的路由
+      const { name } = this.$route;
+      if (name) {
+        this.$store.dispatch("tagsView/addView", this.$route);
+      }
+      return false;
     },
     closeSelectedTag(view) {},
     refreshSelectedTag(view) {},
